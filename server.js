@@ -15,6 +15,9 @@ const apiLimiter = rateLimit({
 // Apply the rate limiter to all requests with the '/weather/' prefix
 app.use('/weather/', apiLimiter)
 
+app.get('/', (req, res) => {
+  res.redirect("/weather/")
+})
 app.get("/weather/:city", getWeather)
 
 app.listen(PORT, () => {
